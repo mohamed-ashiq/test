@@ -20,4 +20,4 @@ deploy:
     branch: master
 
 addons:
-  ssh_known_hosts: ashiq-diviso.rhcloud.com
+  ssh_known_hosts: 58f4562f2d527100cd00004c@ashiq-diviso.rhcloud.com
