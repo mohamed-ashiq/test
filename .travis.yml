@@ -23,4 +23,3 @@ addons:
   ssh_known_hosts: ashiq-diviso.rhcloud.com
 before_deploy:
 - eval "$(ssh-agent -s)"
-- ssh-add /deploy_rsa
