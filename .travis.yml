@@ -1,24 +1,25 @@
+
 language: java
 sudo: false
 cache:
   directories:
-  - "$HOME/.m2"
+    - $HOME/.m2
 env:
   global:
-  - MAVEN_OPTS="-XX:MaxPermSize=256m -Xmx512m"
-  - JAVA_OPTS="-XX:MaxPermSize=256m -Xmx512m"
+    - MAVEN_OPTS="-XX:MaxPermSize=256m -Xmx512m"
+    - JAVA_OPTS="-XX:MaxPermSize=256m -Xmx512m"
 jdk:
-- oraclejdk8
-script: mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-addons:
-  ssh_known_hosts: ashiq-diviso.rhcloud.com
-before_deploy:
-- ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
-- rm -f $TRAVIS_BUILD_DIR/deploy_rsa
-deploy:
-  provider: script
-  skip_cleanup: true
-  script: rsync -r --delete-after --quiet /home/travis/build/mohamed-ashiq/test/target/demo-0.0.1-SNAPSHOT.jar
-    58f4562f2d527100cd00004c@ashiq-diviso.rhcloud.com:/var/lib/openshift/58f4562f2d527100cd00004c/app-root/data
-  on:
-    branch: master
+  - oraclejdk8
+
+services:
+  - mysql
+
+script:
+  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+ 
+
+
+before_install:
+    - mysql -e 'CREATE DATABASE mysql_db;'
+
+
