@@ -9,17 +9,25 @@ env:
   - JAVA_OPTS="-XX:MaxPermSize=256m -Xmx512m"
 jdk:
 - oraclejdk8
-services:
-- mysql
 script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-before_install:
-- mysql -e 'CREATE DATABASE mysql_db;'
+before_deploy:
+  - git config --global user.email "builds@travis-ci.com"
+  - git config --global user.name "Travis CI"
+  - export GIT_TAG=$TRAVIS_BRANCH-v0.1.$TRAVIS_BUILD_NUMBER
+  - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+  - git push -q https://ccf997adbcf66af4af5fa1c005758fc7c33ddc7f@github.com/mohamed-ashiq/test.git --tags
+
 deploy:
-  provider: openshift
-  user: "$EMAIL_ADDRESS"
-  password:
-    secure: WFokeDCJTwYGqdjix4v795KYgDxXb2wNz1FjvSABoTQ1fDeGaYc5y9zHyaAJn3LVW4MM9PS5NJlPsVWNbUxhynh6YsNT/VKzGp/w0BQrn33JGA1VMg/bC6ORZHyOv71EUNZQqkZmoxUmwILrZat0HRGOoExUtkerfB4uOuj2crVmB2RKbi+VFIFl9mX3bTCJvQHSK0p3InQ2De/F+rVaQOyXF+ctah0GjzITDp6s9AKvAzA7RRZOHG0k4fJWVHto03gJHIr6nnnVAU2RfQxF8E1iuhEPJpc72l/96R4KwGFqjkCL6qmGjA7/LfQUZQK47ULma56KYSkBZrLJVTr291HuxI4sRzbytp6latShoGisXgJsVmQgCFf69delycqy+vVBA4797pQ9ZS13rqxgKJVUz6hDWu9cw9NbjBjwYAqRYxZKG3Aun6naHIvdt+TnQjrYZN/5vQK1yrTKI9veCaBkNpNQupf9mT8cT/l51GZBIRy3JunnU7oZJXSBA+sLwQBuSOk8hGFBC9moIONAYe2hZ72JPd6waqQ9KdjdCkVetMU0V3TgbOyeAIB0xqyP7yOCpEtpxzwQJkb53swrNNUwQflIkBd7vrM7Uzpm5O9dfYEEA1R2iSNkMZqoH2LzTeAQF+/MxFnh8huhMNlW4SifxE4wQAltVTQ579VAyY0=
-  app: "$APP_NAME"
-  domain: "$DOMAIN_NAME"
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: [redacted]
+  file:
+    - "demo-0.0.1-SNAPSHOT.jar"
   on:
-    repo: mohamed-ashiq/test
+    tags: false
+    all_branches: true
+
+branches:
+  except:
+    - /^*-v[0-9]/
