@@ -17,6 +17,7 @@ script:
 addons:
   ssh_known_hosts: ashiq-diviso.rhcloud.com
 before_deploy:
+  cat deploy_rsa.enc
 - openssl aes-256-cbc -K $encrypted_128e92061b55_key -iv $encrypted_128e92061b55_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
