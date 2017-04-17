@@ -1,24 +1,28 @@
 
 language: java
 sudo: false
-
 cache:
   directories:
     - $HOME/.m2
-    
 env:
   global:
     - MAVEN_OPTS="-XX:MaxPermSize=256m -Xmx512m"
     - JAVA_OPTS="-XX:MaxPermSize=256m -Xmx512m"
-    
 jdk:
   - oraclejdk8
-  
+
+services:
+  - mysql
 
 script:
   mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  
  
+
+
+before_install:
+    - mysql -e 'CREATE DATABASE mysql_db;'
+
+
 deploy:
   provider: openshift
   user: "abhilash14300@hotmail.com"
