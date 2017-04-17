@@ -11,8 +11,8 @@ jdk:
 - oraclejdk8
 script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 before_deploy:
-  - git config --global user.email mohamed.ashiq@lxisoft.com
-  - git config --global user.name mohamed-ashiq
+  - git config --global user.email 'mohamed.ashiq@lxisoft.com'
+  - git config --global user.name 'mohamed-ashiq'
   - export GIT_TAG=$TRAVIS_BRANCH-v0.1.$TRAVIS_BUILD_NUMBER
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
   - git push -q https://ccf997adbcf66af4af5fa1c005758fc7c33ddc7f@github.com/mohamed-ashiq/test.git --tags
