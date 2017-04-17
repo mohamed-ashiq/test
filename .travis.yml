@@ -25,7 +25,8 @@ before_install:
 
 deploy:
   provider: openshift
-  user: "abhilash14300@hotmail.com"
-  password: "58685685" # can be encrypted
-  domain: "diviso"
-  app: |ashiq-diviso.rhcloud.com| ashiq
+  user: "kkmaya4u@gmail.com"
+  password: "OurByta123" # can be encrypted
+  domain: "byta"
+  app: |newtest-byta.rhcloud.com| newtest
+   
