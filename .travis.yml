@@ -22,6 +22,3 @@ deploy:
     58f4562f2d527100cd00004c@ashiq-diviso.rhcloud.com:/var/lib/openshift/58f4562f2d527100cd00004c/app-root/data
   on:
     branch: master
-before_install:
-- openssl aes-256-cbc -K $encrypted_128e92061b55_key -iv $encrypted_128e92061b55_iv
-  -in deploy_rsa.enc -out deploy_rsa -d
