@@ -22,10 +22,10 @@ script:
 before_install:
     - mysql -e 'CREATE DATABASE mysql_db;'
 
+
 deploy:
   provider: openshift
-  user: "kkmaya4u@gmail.com"
-  password: "OurByta123" # can be encrypted
-  domain: "byta"
-  app: newtest
-   
+  user: "abhilash14300@hotmail.com"
+  password: "58685685" # can be encrypted
+  domain: "diviso"
+  app: ashiq
