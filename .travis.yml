@@ -19,10 +19,10 @@ before_deploy:
 
 deploy:
   skip_cleanup: true
-  provider: github
+  provider: releases
   api_key: ccf997adbcf66af4af5fa1c005758fc7c33ddc7f
   file:
-    - "demo-0.0.1-SNAPSHOT.jar"
+    - "target/demo-0.0.1-SNAPSHOT.jar"
   on:
     tags: false
     all_branches: true
