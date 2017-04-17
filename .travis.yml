@@ -12,15 +12,19 @@ jdk:
   - oraclejdk8
 
 script:
-  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
  
-
 addons:
   ssh_known_hosts: ashiq-diviso.rhcloud.com
+before_deploy:
+- openssl aes-256-cbc aes-256-cbc -K $encrypted_128e92061b55_key -iv $encrypted_128e92061b55_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/deploy_rsa
+- ssh-add /tmp/deploy_rsa
 
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/target 58f4562f2d527100cd00004c@ashiq-diviso.rhcloud.com:/var/lib/openshift/58f4562f2d527100cd00004c/app-root/data
+  script: rsync -r --delete-after --quiet $/home/travis/build/mohamed-ashiq/test/target/demo-0.0.1-SNAPSHOT.jar 58f4562f2d527100cd00004c@ashiq-diviso.rhcloud.com:/var/lib/openshift/58f4562f2d527100cd00004c/app-root/data
   on:
     branch: master
