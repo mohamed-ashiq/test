@@ -25,7 +25,7 @@ deploy:
     branch: master
 
 addons:
-  ssh_known_hosts: 58f4562f2d527100cd00004c@ashiq-diviso.rhcloud.com
+  ssh_known_hosts: ashiq-diviso.rhcloud.com
 before_deploy:
 - openssl aes-256-cbc aes-256-cbc -K $encrypted_128e92061b55_key -iv $encrypted_128e92061b55_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
 - eval "$(ssh-agent -s)"
