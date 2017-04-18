@@ -13,8 +13,7 @@ script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 deploy:
   provider: releases
-  user: mohamed-ashiq
-  password: formylxi12345
+  api_key: ccf997adbcf66af4af5fa1c005758fc7c33ddc7f
   file: target/demo-0.0.1-SNAPSHOT.jar
   skip_cleanup: true
   on:
