@@ -11,6 +11,7 @@ jdk:
 - oraclejdk8
 script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 deploy:
+  skip_cleanup: true
   provider: openshift
   user: abhilash14300@hotmail.com
   password:
