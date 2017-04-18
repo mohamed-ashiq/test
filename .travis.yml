@@ -17,4 +17,4 @@ deploy:
   file: "target/demo-0.0.1-SNAPSHOT.jar"
   skip_cleanup: true
   on:
-    tags: true
+    tags: false
