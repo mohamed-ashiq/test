@@ -14,6 +14,6 @@ deploy:
   provider: releases
   api_key:
     secure: GN0nNhIB8NFshZ4egY3ILzqtczzXAb1MGLsgItan8WhV/vcO4XWlLZ+K1+d3ZrS/kXmyHjYgv1L0+zSTc55vMwRou5amuw2ScMoaxtJMm5TsvH7D7fXr4LBPbTC9OFJ9V9E/3NiuIGAJdqJnz+Nc/gftpNUNr/u3hZ0IrKCDIRjkRIY1ObiScDRV18BA3VbsIMJRVQTu0bH0I+ntejPXotYZ4cGi62WMECxeCiOdfxrb2al7pYTa/+H3kZKEg76I5jReB2Y+J6Pcmzd1X/F6JEnAnGFr4VTyrpvo3+/Fax9+kGCLGKIDY+Sg7fU0srwQezLiyWm8gfWv9vNorI9IlVzRLBjTZlIQsI9/1oAQ3vwvqBy7r+rIJs2qSidWjU7ypCzPKt/aED8BHd9p7GE4X6xV3vl1cTPr+PT90dQgpoAixAveWsim+oCHRM/yIrTbEjiBGunPjnbqMkSJdYYn2LEpRNJYgJPHUorVx1hXrEgKp8hLOtPGWfS/zaQYVRchDO0L93IOg0r7LcbCsgWnOxKh508ywvR+fuxik4OKSfk07IXg3UyxM8oEQZeD5Tr4Yn+ONeNuUXftMmG/ZwxLV6c3idYHdSnSbujr3EGPPSo3cYEekUX8j3eklh4GWnXf3Chk0otR2JxH0CGPUw4lz9JXDnKC/h5IN23jMJyAros=
-  file: target
+  file: target/demo-0.0.1-SNAPSHOT.jar
   on:
     repo: mohamed-ashiq/test
