@@ -18,3 +18,4 @@ deploy:
   file: target/demo-0.0.1-SNAPSHOT.jar
   on:
     repo: mohamed-ashiq/test
+    tags: false
