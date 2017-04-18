@@ -9,7 +9,7 @@ env:
   - JAVA_OPTS="-XX:MaxPermSize=256m -Xmx512m"
 jdk:
 - oraclejdk8
-script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script: mvn install -Popenshift -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 deploy:
   skip_cleanup: true
   provider: openshift
